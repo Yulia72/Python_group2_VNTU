@@ -1,16 +1,11 @@
 {% extends "basic.html" %}
 
 {% block main %}
-<form name = “add_article” method="post" action="#">
-    <input name="title" type="text" placeholder="Enter first name" required><br><br>
-    <input name="title" type="text" placeholder="Enter last name" required><br><br>
-    <input name="URL" type="password" placeholder="Guess the password" required ><br><br>
-    <div class="date"><p>Choose your date of birth</p></div>
-    <input name="URL" type="date" required ><br><br>
-    <input name="URL" type="email" placeholder="Enter your email" required ><br><br>
-    <input name="URL" type="tel" placeholder="Enter your phone number" required ><br><br>
-    <button name="submit" type="submit">ADD ARTICLE</button>
-    <button name="reset" type="reset">RESET</button>
-</form>
+<form method="post">
+    <input name="name" type="text" placeholder="Enter name" required><br>
+    <input name="email" type="email" placeholder="Enter email" required><br>
+    <input name="password" type="password" placeholder="Enter password" required><br>
 
+    <button type="submit">REGISTER</button>
+</form>
 {% endblock %}

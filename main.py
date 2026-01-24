@@ -1,11 +1,27 @@
 from flask import Flask
-from flask import render_template, request
+from flask import render_template, request, url_for
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///side.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False, unique=True)
+    email = db.Column(db.String(120), nullable=False, unique=True)
+
+with app.app_context():
+    db.create_all()
+
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    users = User.query.all()
+    return render_template('index.html', users=users)
 
 @app.route('/<name>')
 def user_index(name):
@@ -31,9 +47,18 @@ def user_form():
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
-        # Поки просто повертаємо відповідь на екран
-        return f"Дякую, {name}! Ми отримали вашу форму."
+
+
+        try:
+            db.session.add(user)
+            db.session.commit()
+            return redirect(url_for('index'))
+        except:
+            return "Помилка при реєстрації"
+
     return render_template('form.html')
+
+
 
 if __name__ == "__main__":
    app.run()
