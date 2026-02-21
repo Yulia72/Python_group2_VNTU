@@ -62,7 +62,7 @@ h1{
 }
 
 h2{
-    font-size: 50px;
+    font-size: 40px;
     
 }
 
@@ -85,6 +85,8 @@ footer{
 }
 
 form{
+    width: 400px;
+    box-sizing: border-box;
 	margin: 0 auto;
 	font-size: 30px;
 	text-align: center;
@@ -104,10 +106,11 @@ form{
 }
 
 input{
-	width: 400px;
+	width: 100%;
 	font-size: 20px;
 	padding: 5px;
-	margin: 5px;
+	margin: 10px 0;
+    box-sizing: border-box;
 	
 }
 
@@ -128,7 +131,7 @@ button{
     font-size: 16px;
     font-family: sans-serif;
     border: none;
-    transition: 0.3 s;
+    transition: 0.3s;
 }
 button:hover {
     background: #0056b3;
@@ -260,11 +263,39 @@ button:hover {
 
 .post_text_link a{
     color: white;
-    font-size: 25px;
+    font-size: 15px;
     text-decoration: none;
 
 
 }
 .post_text_link a:hover{
     color: #c4ff9e;
+}
+.alert {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.alert.danger {
+    background-color: thistle;
+    color: red;
+    border: 1px solid red;
+}
+.alert.success {
+    background-color: lightgreen;
+    color: darkgreen;
+    border: 1px solid green;
+}
+.close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    font-size: 15px;
+    cursor: pointer;
 }

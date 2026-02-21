@@ -1,7 +1,7 @@
 {% extends "basic.html" %}
 
 {% block main %}
-<form method="post">
+<form method="post" action="{{ url_for('user_form') }}">
     <input name="name" type="text" placeholder="Enter name" required><br>
     <input name="email" type="email" placeholder="Enter email" required><br>
     <input name="password" type="password" placeholder="Enter password" required><br>
